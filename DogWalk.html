@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog Walk - FurBestie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="js/site.js"></script>
+    <link rel="stylesheet" href="/DogAmi.styles.css?v=mdfz7xka4kbL2IFLbbK_M05zHr0u8juFtdhr6eEjQGs" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+
+    
+    <style>
+        .calendar-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px 24px 24px 24px;
+            border-top: 2px solid #00724E; /* Green top border */
+            border-bottom: 2px solid #00724E;
+            border-left: 2px solid #00724E;
+            border-right: 2px solid #00724E;
+            transform: scale(0.9); /* Adjust this value for desired size (e.g., 0.7, 0.8, 0.9) */
+            transform-origin: top left; /* Keeps the calendar aligned to the top left */
+        }
+
+        #calendar {
+            height: 690px;
+            overflow-y: auto;
+        }
+
+        /* Add these lines: */
+        #calendar a,
+        #calendar .fc-daygrid-day-number,
+        #calendar .fc-col-header-cell-cushion {
+            color: #333 !important;
+            text-decoration: none !important;
+        }
+
+        #calendar a:hover,
+        #calendar .fc-daygrid-day-number:hover,
+        #calendar .fc-col-header-cell-cushion:hover {
+            color: #222 !important;
+            text-decoration: none !important;
+        }
+    </style>
+ <!-- This renders my FullCalendar CSS Frame 4 -->
+
+
+</head>
+<body class="">
+    <div b-jr6rfnnayl class="site-banner text-center py-2">
+        <span b-jr6rfnnayl>
+            Welcome to FurBestie! <i b-jr6rfnnayl class="fa fa-paw paw-white"></i> Your home and pets live in Daisy’s heart
+        </span>
+    </div>
+    <header b-jr6rfnnayl class="site-header narrow-header">
+        <nav b-jr6rfnnayl class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-0">
+            <div b-jr6rfnnayl class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center ms-5 me-5" href="/">
+                    <img src="images/Frame 4.png" alt="Logo" class="logo me-2" style="margin-left: 100px;" />
+                    <span b-jr6rfnnayl></span>
+                </a>
+                <button b-jr6rfnnayl class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-jr6rfnnayl class="navbar-toggler-icon"></span>
+                </button>
+                <div b-jr6rfnnayl class="navbar-collapse collapse justify-content-center">
+                    <ul b-jr6rfnnayl class="navbar-nav mx-auto">
+                        <li b-jr6rfnnayl class="nav-item mx-4">
+                            <a class="nav-link " href="/">Home</a>
+                        </li>
+                        <li b-jr6rfnnayl class="nav-item mx-4">
+                            <a class="nav-link " href="Housesit.html">Housesit</a>
+                        </li>
+                        <li b-jr6rfnnayl class="nav-item mx-4">
+                            <a class="nav-link " href="HomeVisit.html">Home Visit</a>
+                        </li>
+                        <li b-jr6rfnnayl class="nav-item mx-4">                          
+                            <a class="nav-link " href="DogHike.html">Dog Hike</a>
+                        </li>
+                        <li b-jr6rfnnayl class="nav-item mx-4">
+                            <a class="nav-link active" href="DogWalk.html">Dog Walk</a>
+                        </li>
+                        <li b-jr6rfnnayl class="nav-item mx-4">
+                            <a class="nav-link " href="WebsiteDesign.html">Website Design</a>
+                        </li>
+                    </ul>
+                </div>              
+            </div>
+        </nav>
+    </header>
+
+    <div b-jr6rfnnayl id="logo-splash" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:white; z-index:9999; align-items:center; justify-content:center;">
+        <img src="images/Frame 4.png" alt="Logo" style="max-width:300px;" />
+    </div>
+
+    <!--<div class="container"> b-jr6rfnnayl-->
+    <main b-jr6rfnnayl role="main" class="p-0 m-0" >
+        
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-10 col-md-12 text-center position-relative" style="padding-bottom: 64px;">
+        <img src="images/haha1.gif" alt="Animated Dog" class="animated-img-large" />
+        <a href="#booking" class="book-service-btn">Book My Service</a>
+    </div>
+</div>
+
+
+<div id="booking" class="container mb-1">
+    <div class="row justify-content-center g-5">
+        <!-- Calendar (left side) -->
+        <div class="col-md-5">
+            <h5 class="card-title mb-2 mt-2 text-center" style="color: #F26B5E; font-weight: bold; font-size: 1.6rem;">Check Availability</h5>
+            <div class="calendar-container">                
+                <!-- Date picker for quick navigation -->
+                <div class="mb-3" style="max-width:900px;margin:0 auto;">
+                    <label for="calendarDatePicker" class="form-label">Go to date:</label>
+                    <input type="date" id="calendarDatePicker" class="form-control" style="max-width:200px;display:inline-block;" />
+                </div>
+                <div id="calendar"></div>
+            </div>
+        </div>
+
+        <!-- Booking Form (right side) -->
+        <div class="col-md-6">
+            <h5 class="card-title mb-2 mt-2 text-center" style="color: #F26B5E; font-weight: bold; font-size: 1.6rem;">Book Here</h5>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form id="bookingForm">
+                        <input type="hidden" name="service" value="DogWalk" />
+                        <div class="mb-3">
+                            <label for="bookingDate" class="form-label" style="font-weight: 580;">Select Date</label>
+                            <input type="date" class="form-control" id="bookingDate" name="startDate" min="2025-09-02" required />
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="startTime" class="form-label" style="font-weight: 580;">Start Time</label>
+                                <input type="time" class="form-control" id="startTime" name="startTime" required />
+                            </div>
+                            <div class="col">
+                                <label for="finishTime" class="form-label" style="font-weight: 580;">Finish Time</label>
+                                <input type="time" class="form-control" id="finishTime" name="finishTime" required />
+                            </div>
+                        </div>                        
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="firstName" class="form-label" style="font-weight: 580;">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="col">
+                                <label for="phone" class="form-label" style="font-weight: 580;">Phone Number</label>
+                                <input type="text" class="form-control" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label" style="font-weight: 580;">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>                           
+                        </div>                       
+                                           
+                        <div class="text-center mb-3">
+                            <button type="submit" class="book-service-btn form-btn">Book Now</button>
+                        </div>
+                    </form>
+                    <div id="bookingPrompt"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/dailyCalendar.js"></script>
+
+
+    </main>
+    <!--</div>-->
+
+    <footer b-jr6rfnnayl style="background: #87ceeb;">
+        <div b-jr6rfnnayl class="d-flex flex-column flex-lg-row align-items-start justify-content-between py-4 px-3" style="width:100%;">
+            <!-- Logo on the left -->
+            <div b-jr6rfnnayl class="d-flex flex-column align-items-start" style="min-width:120px;">
+                <a href="/">
+                    <img src="images/Frame 4.png" alt="FurBestie Logo" class="logo" style="margin-left: 150px;" />
+                </a>
+                <div b-jr6rfnnayl class="mt-3 mb-2 d-flex flex-column gap-1 footer-links" style="margin-left: 160px;">
+                    <a b-jr6rfnnayl href="https://www.kiwihousesitters.co.nz/house-sitter-pet-sitter/536797/reliable-and-environmentally-friendly-non-smoker?from=welcome">About Me</a>
+                    <a href="/Home/Terms">Terms &amp; Conditions</a>
+                    <a href="/Home/Privacy">Privacy Policy</a>
+                    <span b-jr6rfnnayl class="footer-copyright">
+                        &copy; 2025 - FurBestie
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- Centered form -->
+            <div b-jr6rfnnayl id="Contact" style="max-width:520px; width:100%;">
+                <div b-jr6rfnnayl class="mb-3  fw-bold" style="letter-spacing:1px; font-size:1.3rem; color: #faf7f0;">
+                    Have A Question? Send Me A Message Below:
+                </div>
+                <form id="contact-footer-form">
+                    <div b-jr6rfnnayl class="row">
+                        <div b-jr6rfnnayl class="col-md-6">
+                            <div b-jr6rfnnayl class="form-floating-custom mb-3">
+                                <input b-jr6rfnnayl type="text" class="form-control" id="firstName" name="firstName" required placeholder=" ">
+                                <label b-jr6rfnnayl for="firstName">First name: </label>
+                            </div>
+                        </div>
+                        <div b-jr6rfnnayl class="col-md-6">
+                            <div b-jr6rfnnayl class="form-floating-custom mb-3">
+                                <input b-jr6rfnnayl type="text" class="form-control" id="lastName" name="lastName" placeholder=" ">
+                                <label b-jr6rfnnayl for="lastName">Last name: </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div b-jr6rfnnayl class="form-floating-custom mb-3">
+                        <input b-jr6rfnnayl type="email" class="form-control" id="email" name="email" required placeholder=" ">
+                        <label b-jr6rfnnayl for="email">Email address: </label>
+                    </div>
+                    <div b-jr6rfnnayl class="form-floating-custom mb-3">
+                        <textarea b-jr6rfnnayl class="form-control" id="content" name="content" rows="3" required placeholder=" "></textarea>
+                        <label b-jr6rfnnayl for="content">Message: </label>
+                    </div>
+                    <div b-jr6rfnnayl class="text-center mb-1">
+                        <button b-jr6rfnnayl type="submit" class="btn btn-success btn-lg px-3" style="border-radius:2rem; font-weight:600; min-width:10px; padding: 0.4rem 1.2rem; font-size: 1.25rem;">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div b-jr6rfnnayl id="contact-footer-prompt"></div>
+            <!-- Hours section on the right -->
+            <div b-jr6rfnnayl class="footer-hours p-4" style="background:#fff; border-radius:1.5rem; min-width:160px; max-width:200px; text-align:center; margin-right: 150px;" >
+                <div b-jr6rfnnayl class="fw-bold" style="color:#228B22; font-size:1.35rem; letter-spacing:1px; margin-bottom:0.8rem;">HOURS</div>
+                <div b-jr6rfnnayl style="color:#555; font-size:1.1rem; line-height:1.8;">
+                    <div b-jr6rfnnayl>MON: 8am - 8pm</div>
+                    <div b-jr6rfnnayl>TUE: 8am - 8pm</div>
+                    <div b-jr6rfnnayl>WED: 8am - 8pm</div>
+                    <div b-jr6rfnnayl>THU: 8am - 8pm</div>
+                    <div b-jr6rfnnayl>FRI: 8am - 8pm</div>
+                    <div b-jr6rfnnayl>SAT: 8am - 8pm</div>
+                    <div b-jr6rfnnayl>SUN: 8am - 8pm</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=XyF03f6jCTV0rqtuca7ZogIc99WUjoJh0VitKD_FQ64"></script>
+    
+    <!--<script>
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                document.getElementById('logo-splash').classList.add('hide');
+            }, 1200); // 1.2 seconds, adjust as needed
+        });
+    </script> b-jr6rfnnayl-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var splash = document.getElementById('logo-splash');
+            var logo = splash.querySelector('img');
+            logo.addEventListener('animationend', function () {
+                splash.classList.add('animated-out');
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.form-floating-custom textarea').forEach(function (textarea) {
+                textarea.addEventListener('input', function () {
+                    if (textarea.value) {
+                        textarea.classList.add('has-content');
+                    } else {
+                        textarea.classList.remove('has-content');
+                    }
+                });
+                // Initial state
+                if (textarea.value) {
+                    textarea.classList.add('has-content');
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.form-floating-custom input.form-control').forEach(function (input) {
+                function checkValue() {
+                    if (input.value) {
+                        input.classList.add('has-content');
+                    } else {
+                        input.classList.remove('has-content');
+                    }
+                }
+                input.addEventListener('input', checkValue);
+                input.addEventListener('blur', checkValue);
+                // Initial state
+                checkValue();
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the logo splash has already been shown
+            if (!document.cookie.split('; ').find(row => row.startsWith('LogoSplashShown='))) {
+                var splash = document.getElementById('logo-splash');
+                splash.style.display = 'flex';
+                // Set the cookie so it won't show again
+                document.cookie = "LogoSplashShown=true; path=/";
+                setTimeout(function () {
+                    splash.style.display = 'none';
+                }, 1500); // Show for 1.5 seconds
+            }
+        });
+    </script>
+
+    <script>
+        (g=>{
+            var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});
+            var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+                key: "AIzaSyA_iqHJ7YG5-jlEgNd0DL6op79URFwN1WA",
+                v: "weekly",
+                // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+                // Add other bootstrap parameters as needed, using camel case.
+            });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('contact-footer-form');
+        if (form) {
+        form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent form from submitting to server
+
+        // Optionally, validate fields here
+
+        // Show prompt
+        var promptDiv = document.getElementById('contact-footer-prompt');
+        promptDiv.innerHTML = '
+        <div class="alert alert-success text-center mt-2">Message sent! (Not saved in database)</div>';
+
+        // Optionally, reset the form
+        form.reset();
+        });
+        }
+        });
+    </script>
+</body>
+</html>

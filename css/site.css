@@ -1,0 +1,351 @@
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.hero-section {
+    background: url('/images/hero-bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.narrow-header {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+.narrow-header .nav-link {
+    font-size: 1.3rem; /* Makes the font larger */
+    color: #228B22 !important; /* Grass green (SeaGreen) */
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.narrow-header .nav-link:hover,
+.narrow-header .nav-link:focus {
+    color: #66bb6a !important; /* Even deeper green on hover/focus */
+    }
+
+.site-banner {
+    background-color: #87ceeb;
+    color: #faf7f0 !important;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.paw-white {
+    color: #fff;
+}
+.logo {
+    width: 140px;
+    height: auto;
+    margin-left: 40px;
+    
+}
+.sign-inup-link {
+    color: #228B22 !important;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.sign-inup-link:hover,
+.sign-inup-link:focus {
+    color: #66bb6a !important;
+    text-decoration: none;
+}
+
+.sign-inup-text {
+    font-size: 1.15rem;
+}
+
+#logo-splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#logo-splash img {
+    max-width: 350px;
+    width: 80vw;
+    height: auto;
+    box-shadow: 0 0 32px 0 rgba(0,0,0,0.04);
+}
+
+
+
+#logo-splash.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes logo-expand-fade {
+    0% {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+}
+
+#logo-splash img {
+    max-width: 350px;
+    width: 80vw;
+    height: auto;
+    box-shadow: 0 0 32px 0 rgba(0,0,0,0.04);
+    opacity: 0;
+    transform: scale(0.6);
+    animation: logo-expand-fade 1.6s cubic-bezier(0.23, 1.01, 0.32, 1) forwards;
+}
+#logo-splash.animated-out {
+    display: none !important;
+}
+
+html, body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Quicksand', 'Montserrat', Arial, sans-serif;
+}
+
+main[role="main"] {
+    flex: 1 0 auto;
+}
+
+.services-section {
+    margin-top: 3rem;   
+}
+
+footer {
+    position: relative; /* or remove position entirely */
+    bottom: auto;
+    width: 100%;
+    margin-top: auto;
+    background-color: #C7E8B4;
+}
+
+.form-floating-custom {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-floating-custom .form-control,
+.form-floating-custom textarea.form-control {
+    padding: 1.25rem 0.75rem 0.5rem 0.75rem;
+    height: auto;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.form-floating-custom label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ced4da; /* Match the default border colora */
+    background: #fff;
+    padding: 0 0.2rem;
+    pointer-events: none;
+    transition: 0.2s cubic-bezier(.4,0,.2,1);
+    font-size: 1rem;
+    line-height: 1; 
+    z-index: 2;
+    max-width: 70%; /* Prevent label from being too wide */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.form-floating-custom .form-control,
+.form-floating-custom textarea.form-control {
+    padding: 1.25rem 0.75rem 0.5rem 1.5rem; /* More left padding for label */
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.form-floating-custom .form-control:focus + label,
+.form-floating-custom .form-control:not(:placeholder-shown) + label,
+.form-floating-custom textarea.form-control:focus + label,
+.form-floating-custom textarea.form-control:not(:placeholder-shown) + label {
+    top:  -0.6rem;         /* Move label above the border */
+    left: 0.9rem;
+    font-size: 0.85rem;
+    color: #258cfb; /* Match focus border */
+    background: #fff;
+    padding: 0 0.2rem;
+    transform: none;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.footer-links a {
+    color: #faf7f0 !important;
+    font-size: 1.25rem; /* Larger font size  */
+    font-weight: 600; /* Bolder text */
+    letter-spacing: 0.6px; /* Slightly more spacing */
+    text-decoration: none !important;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {   
+    text-decoration: none !important;
+    color: #228B22 !important;  /* Optional: highlight color on hover */
+}
+
+.footer-links span {
+    margin-top: 3rem;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Sidebar container */
+.custom-sidebar {
+    min-height: 50vh; /* Makes sidebar longer */  
+    border-radius: 8px;
+    margin-left: 150px;
+    margin-right: 70px;
+}
+/* Sidebar links */
+.custom-sidebar .list-group-item {
+    font-size: 1.2rem; /* Larger font */
+    color: #222; /* Text color */
+    background-color: transparent;
+    transition: background 0.2s, color 0.2s;
+    padding-top: 0.8rem; /* Increase top padding */
+    padding-bottom: 0.8rem; /* Increase bottom padding */
+    font-weight: 500; /* Makes sidebar items bold */
+    
+}
+
+.custom-sidebar .list-group-item.active,
+.custom-sidebar .list-group-item:active {
+    background-color: #00724E; /* Active background */
+    color: #fff; /* Active text */
+    border: none; /* Removes any default border */
+}
+.custom-sidebar .list-group-item:hover:not(.active) {
+    background-color: #f0f0f0; /* Light gray on hover */
+    
+}
+.custom-sidebar .list-group-item i {
+    width: 1em;         /* Ensures all icons take up the same horizontal space */
+    min-width: 1em;
+    text-align: center;   /* Centers the icon in its space */
+    
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.link-green {
+    color: #00724E !important;
+    text-decoration: underline;
+    text-underline-offset: 5px; /* Increase this value for more distance */
+    font-weight: 600;
+    font-size: 1.1em;
+}
+.link-green:hover {
+    color: #005c3e !important;
+}
+
+.service-img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    background: #fff;
+}
+
+.nav-link.active {
+    color: #8be89f !important; /* Light green text-decoration: underline !important;*/
+
+    text-underline-offset: 12px; /* Lower underline */
+    font-weight: bold;
+}
+
+.animated-img-large {
+    width: 100%;
+    max-width: 1110px; /* Increase this value for even larger image */
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    margin: 0 auto;
+    display: block;
+}
+
+.book-service-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 85px; /* Adjust this value for vertical placement */
+    transform: translateX(-50%);
+    background-color: #ffc857;
+    color: #222;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    z-index: 2;
+}
+
+.book-service-btn:hover,
+.book-service-btn:focus {
+    background-color: #66bb6a;
+    color: #fff;
+    text-decoration: none;
+}
+
+.book-service-btn.form-btn {
+    position: static;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin-top: 1rem;
+}
+
+
+
+
