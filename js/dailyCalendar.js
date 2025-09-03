@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
+    var today = new Date();
+    var oneYearFromNow = new Date(today);
+    oneYearFromNow.setFullYear(today.getFullYear() + 1);
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridDay',
         slotMinTime: "08:00:00",
-        slotMaxTime: "20:00:00",
+        slotMaxTime: "18:00:00",
         allDaySlot: false,
         height: "auto",
         headerToolbar: {
@@ -12,13 +16,46 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: ''
         },
-        events: {
-            url: '/DailyCalendar/GetBookings',
-            method: 'GET',
-            failure: function () {
-                alert('There was an error while fetching bookings!');
-            }
+        validRange: {
+            start: today.toISOString().split('T')[0],
+            end: oneYearFromNow.toISOString().split('T')[0]
         },
+       
+        events: [
+            {
+                title: 'Home Visit',
+                start: '2025-09-04T14:00:00',
+                end: '2025-09-04T15:00:00'
+            },
+            {
+                title: 'Dog Hike',
+                start: '2025-09-05T09:00:00',
+                end: '2025-09-05T16:00:00'
+            },
+            {
+                title: 'Dog Walk',
+                start: '2025-09-06T08:00:00',
+                end: '2025-09-06T10:00:00'
+            },
+            {
+                title: 'Home Visit',
+                start: '2025-09-05T17:00:00',
+                end: '2025-09-05T18:00:00'
+            }
+            // Add more events as needed
+        ],
+        //eventContent: function (arg) {
+        //    return { html: '<span style="color:#fff;">' + arg.event.title + '</span>' };
+        //}
+        eventContent: function (arg) {
+            // Show time and title
+            var start = arg.event.start;
+            var hours = start.getHours().toString().padStart(2, '0');
+            var minutes = start.getMinutes().toString().padStart(2, '0');
+            var timeStr = hours + ':' + minutes;
+            return { html: `<span style="color:#fff;">${timeStr} - ${arg.event.title}</span>` };
+        }
+
         eventOverlap: false,
         selectOverlap: function(event) {
             return false;
@@ -28,27 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 
-    // Mark blue and set label for serviceid != 1
-    calendar.setOption('eventDidMount', function(info) {
-        var event = info.event;
-        var el = info.el;
-
-        // Only mark blue if serviceid != 1
-        if (event.extendedProps.service && event.extendedProps.service !== "HouseSit") {
-            el.classList.add('blue-label');
-
-            // Set label text: "HH:mm - ServiceName"
-            var start = event.start;
-            var hours = start.getHours().toString().padStart(2, '0');
-            var minutes = start.getMinutes().toString().padStart(2, '0');
-            var timeStr = hours + ':' + minutes;
-            var serviceName = event.extendedProps.service || '';
-            var titleNode = el.querySelector('.fc-event-title');
-            if (titleNode) {
-                titleNode.textContent = timeStr + ' - ' + serviceName;
-            }
-        }
-    });
 });
 
 
