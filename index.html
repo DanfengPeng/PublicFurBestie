@@ -39,6 +39,22 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.18);
             z-index: 2;
         }
+        #contact-footer-prompt {
+            position: absolute;
+            top: -60px; /* Adjust as needed */
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        #contact-footer-prompt .alert {
+            pointer-events: auto;
+        }
+
+        #Contact {
+            position: relative;
+        }
 
     </style>
  <!-- This renders my FullCalendar CSS Frame 4 -->
@@ -210,7 +226,12 @@
                                 <label b-jr6rfnnayl for="firstName">First name: </label>
                             </div>
                         </div>
-
+                        <div b-jr6rfnnayl class="col-md-6">
+                            <div b-jr6rfnnayl class="form-floating-custom mb-3">
+                                <input b-jr6rfnnayl type="text" class="form-control" id="phone" name="phone" placeholder=" ">
+                                <label b-jr6rfnnayl for="phone">Phone: </label>
+                            </div>
+                        </div>
                     </div>
                     <div b-jr6rfnnayl class="form-floating-custom mb-3 col-md-9">
                         <input b-jr6rfnnayl type="email" class="form-control" id="email" name="email" required placeholder=" ">
