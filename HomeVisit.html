@@ -270,5 +270,44 @@
             }
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                initialDate: '2025-09-01',
+                events: [
+                    {
+                        title: 'Housesitting booked',
+                        start: '2025-09-01',
+                        end: '2025-09-07'
+                    },
+                    {
+                        title: 'Housesitting booked',
+                        start: '2025-09-14',
+                        end: '2025-09-20'
+                    },
+                    {
+                        title: 'Housesitting booked',
+                        start: '2025-09-28',
+                        end: '2025-10-04'
+                    },
+                    {
+                        title: 'Housesitting booked',
+                        start: '2025-10-12',
+                        end: '2025-10-18'
+                    }
+                    // Add more events as needed
+                ],
+                eventContent: function (arg) {
+                    return { html: '<span style="color:#fff;">' + arg.event.title + '</span>' };
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
 </body>
 </html>

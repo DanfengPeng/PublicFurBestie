@@ -129,15 +129,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
     </main>
     <!--</div>-->
 
@@ -172,22 +163,21 @@
                     start: today.toISOString().split('T')[0],
                     end: oneYearFromNow.toISOString().split('T')[0]
                 },
-                events: {
-                    url: '/Housesitting/GetBookings',
-                    method: 'GET',
-                    failure: function () {
-                        alert('There was an error while fetching bookings!');
+                events: [
+                    {
+                        start: '2025-08-01',
+                        end: '2025-09-20'
                     },
-                    success: function (data) {
-                        confirmedBookings = data.map(function (evt) {
-                            return {
-                                start: evt.start,
-                                end: evt.end // inclusive
-                            };
-                        });
-                        return data;
+                    {
+                        start: '2025-09-21',
+                        end: '2025-10-21'
+                    },
+                    {
+                        start: '2025-11-17',
+                        end: '2025-11-29'
                     }
-                },
+                    // Add more events as needed
+                ],
                 // Show "Housesitting booked" for each booking event
                 eventContent: function (arg) {
                     return {
@@ -199,6 +189,7 @@
             calendar.render();
         });
     </script>
+    
     <script>
         document.getElementById('bookingForm').addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -231,44 +222,7 @@
             }
         });
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                initialDate: '2025-09-01',
-                events: [
-                    {
-                        title: 'Housesitting booked',
-                        start: '2025-09-01',
-                        end: '2025-09-07'
-                    },
-                    {
-                        title: 'Housesitting booked',
-                        start: '2025-09-14',
-                        end: '2025-09-20'
-                    },
-                    {
-                        title: 'Housesitting booked',
-                        start: '2025-09-28',
-                        end: '2025-10-04'
-                    },
-                    {
-                        title: 'Housesitting booked',
-                        start: '2025-10-12',
-                        end: '2025-10-18'
-                    }
-                    // Add more events as needed
-                ],
-                eventContent: function (arg) {
-                    return { html: '<span style="color:#fff;">' + arg.event.title + '</span>' };
-                }
-            });
-
-            calendar.render();
-        });
-    </script>
 
 
     <!--<script>
