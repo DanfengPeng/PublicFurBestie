@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     oneYearFromNow.setFullYear(today.getFullYear() + 1);
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [FullCalendar.TimeGridPlugin],
         initialView: 'timeGridDay',
         slotMinTime: "08:00:00",
         slotMaxTime: "18:00:00",
