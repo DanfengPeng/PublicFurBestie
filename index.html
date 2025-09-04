@@ -170,59 +170,6 @@
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/site.js?v=XyF03f6jCTV0rqtuca7ZogIc99WUjoJh0VitKD_FQ64"></script>
-
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-        (function () {
-            emailjs.init("h3_ERKdg3w5LyOYze"); // Replace with your EmailJS public key
-        })();
-
-        // Email validation function
-        function isValidEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var form = document.getElementById('contact-footer-form');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    var firstName = document.getElementById('firstName').value;
-                    var email = document.getElementById('email').value;
-                    var content = document.getElementById('content').value;
-                    var promptDiv = document.getElementById('contact-footer-prompt');
-
-                    // Validate email
-                    if (!isValidEmail(email)) {
-                        promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please enter a valid email address.</div>';
-                        return;
-                    }
-
-                    // Send email to customer
-                    emailjs.send('service_31yisxd', 'template_cqqt16p', {
-                        to_email: email,
-                        firstName: firstName,
-                        message: content
-                    })
-                        .then(function (response) {
-                            promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
-                            form.reset();
-
-                            // Send email to yourself
-                            emailjs.send('service_31yisxd', 'template_cqqt16p', {
-                                to_email: 'dfpeng32@hotmail.com', // Replace with your email
-                                firstName: firstName,
-                                customer_email: email,
-                                message: content
-                            });
-                        }, function (error) {
-                            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
-                        });
-                });
-            }
-        });
-    </script>
+    
 </body>
 </html>
