@@ -219,12 +219,14 @@
                 //    return { html: '<span style="color:#fff;">' + arg.event.title + '</span>' };
                 //}
                 eventContent: function (arg) {
-                    // Show time and title
                     var start = arg.event.start;
-                    var hours = start.getHours().toString().padStart(2, '0');
-                    var minutes = start.getMinutes().toString().padStart(2, '0');
-                    var timeStr = hours + ':' + minutes;
-                    return { html: `<span style="color:#fff;">${timeStr} - ${arg.event.title}</span>` };
+                    var end = arg.event.end;
+                    var startHours = start.getHours().toString().padStart(2, '0');
+                    var startMinutes = start.getMinutes().toString().padStart(2, '0');
+                    var endHours = end.getHours().toString().padStart(2, '0');
+                    var endMinutes = end.getMinutes().toString().padStart(2, '0');
+                    var timeStr = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
+                    return { html: `<span style="color:#fff;">${timeStr} ${arg.event.title}</span>` };
                 },
 
                 eventOverlap: false,
