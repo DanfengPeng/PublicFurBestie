@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var minutes = start.getMinutes().toString().padStart(2, '0');
             var timeStr = hours + ':' + minutes;
             return { html: `<span style="color:#fff;">${timeStr} - ${arg.event.title}</span>` };
-        }
+        },
 
         eventOverlap: false,
         selectOverlap: function(event) {
