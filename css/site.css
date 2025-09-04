@@ -346,6 +346,29 @@ footer {
     margin-top: 1rem;
 }
 
+#calendar {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Remove global blue style from all events */
+.fc-event {
+    /* No background, border, or color here */
+}
+
+/* Only apply blue style to events with .blue-label class */
+.fc-event.blue-label {
+    background-color: #3788d8 !important;
+    border-color: #3788d8 !important;
+    color: #fff !important;
+}
+
+.fc-timegrid-slot {
+    background-color: #fcf8e3;
+}
 
 
 
