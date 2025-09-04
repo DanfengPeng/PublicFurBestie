@@ -26,12 +26,12 @@
             border-bottom: 2px solid #00724E;
             border-left: 2px solid #00724E;
             border-right: 2px solid #00724E;
-            transform: scale(1); /* Adjust this value for desired size (e.g., 0.7, 0.8, 0.9) */
+            /* Adjust this value for desired size (e.g., 0.7, 0.8, 0.9)   transform: scale(1); */
             transform-origin: top left;
         }
 
         #calendar {
-            height: 660px;
+            height: 600px;
             overflow-y: auto;
         }
 
@@ -98,7 +98,7 @@
                 </div>
 
                 <!-- Booking Form (right side) -->
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <h5 class="card-title mb-2 mt-2 text-center" style="color: #F26B5E; font-weight: bold; font-size: 1.8rem;">Book Here</h5>
                     <div class="card shadow-sm">
                         <div class="card-body">
@@ -165,18 +165,16 @@
         }
         loadFragment('shared-header', 'header.html');
         loadFragment('shared-footer', 'footer.html');
-    </script>
+    </script>    
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
-
             var today = new Date();
             var oneYearFromNow = new Date(today);
             oneYearFromNow.setFullYear(today.getFullYear() + 1);
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
-
                 initialView: 'timeGridDay',
                 slotMinTime: "08:00:00",
                 slotMaxTime: "18:00:00",
@@ -191,7 +189,6 @@
                     start: today.toISOString().split('T')[0],
                     end: oneYearFromNow.toISOString().split('T')[0]
                 },
-
                 events: [
                     {
                         title: 'Home Visit',
@@ -215,9 +212,6 @@
                     }
                     // Add more events as needed
                 ],
-                //eventContent: function (arg) {
-                //    return { html: '<span style="color:#fff;">' + arg.event.title + '</span>' };
-                //}
                 eventContent: function (arg) {
                     var start = arg.event.start;
                     var end = arg.event.end;
@@ -226,9 +220,8 @@
                     var endHours = end.getHours().toString().padStart(2, '0');
                     var endMinutes = end.getMinutes().toString().padStart(2, '0');
                     var timeStr = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
-                    return { html: `<span style="color:#fff;">${timeStr} ${arg.event.title}</span>` };
+                    return { html: `<span style="color:#fff;">${timeStr}<span style="margin-left:16px;">${arg.event.title}</span></span>` };
                 },
-
                 eventOverlap: false,
                 selectOverlap: function (event) {
                     return false;
@@ -238,8 +231,23 @@
 
             calendar.render();
 
-        });
+            var calendarDatePicker = document.getElementById('calendarDatePicker');
+            if (calendarDatePicker) {
+                var minDate = today.toISOString().split('T')[0];
+                var maxDate = oneYearFromNow.toISOString().split('T')[0];
+                calendarDatePicker.setAttribute('min', minDate);
+                calendarDatePicker.setAttribute('max', maxDate);
+
+                calendarDatePicker.addEventListener('change', function (e) {
+                    var val = e.target.value;
+                    if (val) {
+                        calendar.gotoDate(val);
+                    }
+                });
+            }
+        }); 
     </script>
+
 
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
