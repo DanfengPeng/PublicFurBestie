@@ -106,7 +106,7 @@
                                 <input type="hidden" name="service" value="DogHike" />
                                 <div class="mb-3">
                                     <label for="bookingDate" class="form-label" style="font-weight: 580;">Select Date</label>
-                                    <input type="date" class="form-control" id="bookingDate" name="startDate" min="2025-09-02" required />
+                                    <input type="date" class="form-control" id="bookingDate" name="startDate" required />
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col">
@@ -149,7 +149,7 @@
 
 
 
-        <script src="/js/dailyCalendar.js"></script>
+        
 
 
     </main>
@@ -165,87 +165,17 @@
         }
         loadFragment('shared-header', 'header.html');
         loadFragment('shared-footer', 'footer.html');
-    </script>    
-
+    </script>
+    <script src="/js/site.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
-            var today = new Date();
-            var oneYearFromNow = new Date(today);
-            oneYearFromNow.setFullYear(today.getFullYear() + 1);
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'timeGridDay',
-                slotMinTime: "08:00:00",
-                slotMaxTime: "18:00:00",
-                allDaySlot: false,
-                height: "auto",
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: ''
-                },
-                validRange: {
-                    start: today.toISOString().split('T')[0],
-                    end: oneYearFromNow.toISOString().split('T')[0]
-                },
-                events: [
-                    {
-                        title: 'Home Visit',
-                        start: '2025-09-04T14:00:00',
-                        end: '2025-09-04T15:00:00'
-                    },
-                    {
-                        title: 'Dog Hike',
-                        start: '2025-09-05T09:00:00',
-                        end: '2025-09-05T16:00:00'
-                    },
-                    {
-                        title: 'Dog Walk',
-                        start: '2025-09-06T08:00:00',
-                        end: '2025-09-06T10:00:00'
-                    },
-                    {
-                        title: 'Home Visit',
-                        start: '2025-09-05T17:00:00',
-                        end: '2025-09-05T18:00:00'
-                    }
-                    // Add more events as needed
-                ],
-                eventContent: function (arg) {
-                    var start = arg.event.start;
-                    var end = arg.event.end;
-                    var startHours = start.getHours().toString().padStart(2, '0');
-                    var startMinutes = start.getMinutes().toString().padStart(2, '0');
-                    var endHours = end.getHours().toString().padStart(2, '0');
-                    var endMinutes = end.getMinutes().toString().padStart(2, '0');
-                    var timeStr = `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
-                    return { html: `<span style="color:#fff;">${timeStr}<span style="margin-left:16px;">${arg.event.title}</span></span>` };
-                },
-                eventOverlap: false,
-                selectOverlap: function (event) {
-                    return false;
-                },
-                selectable: false,
+            initServiceCalendar({
+                events: allServiceEvents
             });
-
-            calendar.render();
-
-            var calendarDatePicker = document.getElementById('calendarDatePicker');
-            if (calendarDatePicker) {
-                var minDate = today.toISOString().split('T')[0];
-                var maxDate = oneYearFromNow.toISOString().split('T')[0];
-                calendarDatePicker.setAttribute('min', minDate);
-                calendarDatePicker.setAttribute('max', maxDate);
-
-                calendarDatePicker.addEventListener('change', function (e) {
-                    var val = e.target.value;
-                    if (val) {
-                        calendar.gotoDate(val);
-                    }
-                });
-            }
-        }); 
+            initBookingForm({
+                serviceName: 'Dog Hike'
+            });
+        });
     </script>
 
 

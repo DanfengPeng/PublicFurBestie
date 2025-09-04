@@ -73,5 +73,59 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.form-floating-custom textarea').forEach(function (textarea) {
+                textarea.addEventListener('input', function () {
+                    if (textarea.value) {
+                        textarea.classList.add('has-content');
+                    } else {
+                        textarea.classList.remove('has-content');
+                    }
+                });
+                // Initial state
+                if (textarea.value) {
+                    textarea.classList.add('has-content');
+                }
+            });
+        });</script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.form-floating-custom input.form-control').forEach(function (input) {
+                function checkValue() {
+                    if (input.value) {
+                        input.classList.add('has-content');
+                    } else {
+                        input.classList.remove('has-content');
+                    }
+                }
+                input.addEventListener('input', checkValue);
+                input.addEventListener('blur', checkValue);
+                // Initial state
+                checkValue();
+            });
+        });</script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('contact-footer-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault(); // Prevent form from submitting to server
+
+                    // Optionally, validate fields here
+
+                    // Show prompt
+                    var promptDiv = document.getElementById('contact-footer-prompt');
+                    promptDiv.innerHTML = '
+                        < div class="alert alert-success text-center mt-2" > Message sent!(Not saved in database)</div > ';
+
+                    // Optionally, reset the form
+                    form.reset();
+                });
+            }
+        });
+    </script>
 </body>
 </html>

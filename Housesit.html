@@ -98,11 +98,11 @@
                             <form id="bookingForm">
                                 <div class="mb-3">
                                     <label for="startDate" class="form-label" style="font-weight: 580;" required>Start Date</label>
-                                    <input type="date" class="form-control" id="startDate" name="startDate" min="2025-09-02" required>
+                                    <input type="date" class="form-control" id="startDate" name="startDate" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="finishDate" class="form-label" style="font-weight: 580;" required>Finish Date</label>
-                                    <input type="date" class="form-control" id="finishDate" name="finishDate" min="2025-09-02" required>
+                                    <input type="date" class="form-control" id="finishDate" name="finishDate" required>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col">
@@ -189,134 +189,68 @@
             calendar.render();
         });
     </script>
-    
+   
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
-        document.getElementById('bookingForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
+        (function () {
+            emailjs.init("h3_ERKdg3w5LyOYze"); // Replace with your EmailJS public key
+        })();
 
-            const form = e.target;
-            const data = new FormData(form);
+        // Email validation function
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
 
-            // Send AJAX request
-            const response = await fetch('/Housesitting/Book', {
-                method: 'POST',
-                body: data
-            });
-
-            // Get response text (could be JSON or HTML)
-            if (response.redirected) {
-                // If your controller redirects, fetch the TempData via AJAX or return JSON instead
-                window.location.href = response.url;
-            } else {
-                // If you return JSON, handle it here
-                const result = await response.json();
-                if (result.success) {
-                    document.getElementById('bookingPrompt').innerHTML =
-                        '<div class="alert alert-success">Booking submitted! You have created a housesitting booking.</div>';
-                    form.reset();
-                    // Optionally, refresh calendar events via AJAX here
-                } else if (result.error) {
-                    document.getElementById('bookingPrompt').innerHTML =
-                        '<div class="alert alert-danger">' + result.error + '</div>';
-                }
-            }
-        });
-    </script>
-
-
-
-    <!--<script>
-        window.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
-                document.getElementById('logo-splash').classList.add('hide');
-            }, 1200); // 1.2 seconds, adjust as needed
-        });
-    </script> b-jr6rfnnayl-->
-    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var splash = document.getElementById('logo-splash');
-            var logo = splash.querySelector('img');
-            logo.addEventListener('animationend', function () {
-                splash.classList.add('animated-out');
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.form-floating-custom textarea').forEach(function (textarea) {
-                textarea.addEventListener('input', function () {
-                    if (textarea.value) {
-                        textarea.classList.add('has-content');
-                    } else {
-                        textarea.classList.remove('has-content');
-                    }
-                });
-                // Initial state
-                if (textarea.value) {
-                    textarea.classList.add('has-content');
-                }
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.form-floating-custom input.form-control').forEach(function (input) {
-                function checkValue() {
-                    if (input.value) {
-                        input.classList.add('has-content');
-                    } else {
-                        input.classList.remove('has-content');
-                    }
-                }
-                input.addEventListener('input', checkValue);
-                input.addEventListener('blur', checkValue);
-                // Initial state
-                checkValue();
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if the logo splash has already been shown
-            if (!document.cookie.split('; ').find(row => row.startsWith('LogoSplashShown='))) {
-                var splash = document.getElementById('logo-splash');
-                splash.style.display = 'flex';
-                // Set the cookie so it won't show again
-                document.cookie = "LogoSplashShown=true; path=/";
-                setTimeout(function () {
-                    splash.style.display = 'none';
-                }, 1500); // Show for 1.5 seconds
-            }
-        });
-    </script>
-
-    <script>
-        (g => {
-            var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {});
-            var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
-        })({
-            key: "AIzaSyA_iqHJ7YG5-jlEgNd0DL6op79URFwN1WA",
-            v: "weekly",
-            // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-            // Add other bootstrap parameters as needed, using camel case.
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var form = document.getElementById('contact-footer-form');
+            var form = document.getElementById('bookingForm');
             if (form) {
                 form.addEventListener('submit', function (e) {
-                    e.preventDefault(); // Prevent form from submitting to server
+                    e.preventDefault();
 
-                    // Optionally, validate fields here
+                    var startDate = document.getElementById('startDate').value;
+                    var finishDate = document.getElementById('finishDate').value;                  
+                    var firstName = document.getElementById('firstName').value;
+                    var phone = document.getElementById('phone').value;
+                    var email = document.getElementById('email').value;
+                    var promptDiv = document.getElementById('bookingPrompt');
 
-                    // Show prompt
-                    var promptDiv = document.getElementById('contact-footer-prompt');
-                    promptDiv.innerHTML = '
-                        < div class="alert alert-success text-center mt-2" > Message sent!(Not saved in database)</div > ';
+                    // Build booking details
+                    var content =
+                        `Booking Details:\n` +
+                        `Service Name: Housesit\n` +
+                        `Start Date: ${startDate}\n` +
+                        `Finish Date: ${finishDate}\n` +                    
+                        `Name: ${firstName}\n` +
+                        `Phone: ${phone}\n` +
+                        `Email: ${email}`;
 
-                    // Optionally, reset the form
-                    form.reset();
+                    // Validate email
+                    function isValidEmail(email) {
+                        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                    }
+                    if (!isValidEmail(email)) {
+                        promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please enter a valid email address.</div>';
+                        return;
+                    }
+
+                    // Send email to user
+                    emailjs.send('service_31yisxd', 'template_bv5qf8p', {
+                        email: email,
+                        name: firstName,
+                        title: content
+                    })
+                        .then(function (response) {
+                            promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Booking submitted! Please check your email for confirmation.</div>';
+                            form.reset();
+                            // Send email to yourself
+                            emailjs.send('service_31yisxd', 'template_bv5qf8p', {
+                                email: 'dfpeng32@hotmail.com', // your email
+                                name: firstName,
+                                title: content
+                            });
+                        }, function (error) {
+                            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
+                        });
                 });
             }
         });
