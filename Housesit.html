@@ -143,7 +143,8 @@
         loadFragment('shared-header', 'header.html');
         loadFragment('shared-footer', 'footer.html');
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="/js/site.js"></script>
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/site.js?v=XyF03f6jCTV0rqtuca7ZogIc99WUjoJh0VitKD_FQ64"></script>
@@ -189,7 +190,7 @@
             calendar.render();
         });
     </script>
-   
+
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         (function () {
@@ -208,7 +209,7 @@
                     e.preventDefault();
 
                     var startDate = document.getElementById('startDate').value;
-                    var finishDate = document.getElementById('finishDate').value;                  
+                    var finishDate = document.getElementById('finishDate').value;
                     var firstName = document.getElementById('firstName').value;
                     var phone = document.getElementById('phone').value;
                     var email = document.getElementById('email').value;
@@ -219,7 +220,7 @@
                         `Booking Details:\n` +
                         `Service Name: Housesit\n` +
                         `Start Date: ${startDate}\n` +
-                        `Finish Date: ${finishDate}\n` +                    
+                        `Finish Date: ${finishDate}\n` +
                         `Name: ${firstName}\n` +
                         `Phone: ${phone}\n` +
                         `Email: ${email}`;
