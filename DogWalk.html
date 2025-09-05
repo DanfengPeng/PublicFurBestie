@@ -15,7 +15,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+
     <style>
         .calendar-container {
             background: #fff;
@@ -25,7 +31,7 @@
             border-top: 2px solid #00724E; /* Green top border */
             border-bottom: 2px solid #00724E;
             border-left: 2px solid #00724E;
-            border-right: 2px solid #00724E;            
+            border-right: 2px solid #00724E;
             transform-origin: top left; /* Keeps the calendar aligned to the top left */
         }
 
@@ -34,22 +40,22 @@
             overflow-y: auto;
         }
 
-        /* Add these lines: */
-        #calendar a,
-        #calendar .fc-daygrid-day-number,
-        #calendar .fc-col-header-cell-cushion {
-            color: #333 !important;
-            text-decoration: none !important;
-        }
+            /* Add these lines: */
+            #calendar a,
+            #calendar .fc-daygrid-day-number,
+            #calendar .fc-col-header-cell-cushion {
+                color: #333 !important;
+                text-decoration: none !important;
+            }
 
-        #calendar a:hover,
-        #calendar .fc-daygrid-day-number:hover,
-        #calendar .fc-col-header-cell-cushion:hover {
-            color: #222 !important;
-            text-decoration: none !important;
-        }
+                #calendar a:hover,
+                #calendar .fc-daygrid-day-number:hover,
+                #calendar .fc-col-header-cell-cushion:hover {
+                    color: #222 !important;
+                    text-decoration: none !important;
+                }
     </style>
- <!-- This renders my FullCalendar CSS Frame 4 -->
+    <!-- This renders my FullCalendar CSS Frame 4 -->
 
 
 </head>
@@ -136,12 +142,7 @@
     </main>
     <!--</div>-->
 
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-   
+ 
     <script>
         function loadFragment(id, url) {
             fetch(url)
