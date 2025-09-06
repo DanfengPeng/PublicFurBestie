@@ -11,11 +11,12 @@
 
     <link rel="stylesheet" href="css/site.css" />
     <script src="js/site.js"></script>
-    <link rel="stylesheet" href="/DogAmi.styles.css?v=mdfz7xka4kbL2IFLbbK_M05zHr0u8juFtdhr6eEjQGs" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-     <!-- This renders my FullCalendar CSS Frame 4 -->
+    <!-- This renders my FullCalendar CSS Frame 4 -->
 
 
 </head>
@@ -62,121 +63,21 @@
                 </div>
             </div>
         </div>
-
+        <div id="shared-footer"></div>
     </main>
     <!--</div>-->
-
-    <div id="shared-footer"></div>
-
+    
     <script>
-        function loadFragment(id, url) {
+        function loadFragment(id, url, callback) {
             fetch(url)
                 .then(r => r.text())
-                .then(html => document.getElementById(id).innerHTML = html);
+                .then(html => {
+                    document.getElementById(id).innerHTML = html;
+                    if (callback) callback();
+                });
         }
         loadFragment('shared-header', 'header.html');
-        loadFragment('shared-footer', 'footer.html');
-    </script>
-
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/site.js?v=XyF03f6jCTV0rqtuca7ZogIc99WUjoJh0VitKD_FQ64"></script>
-
-    <!--<script>
-        window.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
-                document.getElementById('logo-splash').classList.add('hide');
-            }, 1200); // 1.2 seconds, adjust as needed
-        });
-    </script> b-jr6rfnnayl-->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var splash = document.getElementById('logo-splash');
-            var logo = splash.querySelector('img');
-            logo.addEventListener('animationend', function () {
-                splash.classList.add('animated-out');
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.form-floating-custom textarea').forEach(function (textarea) {
-                textarea.addEventListener('input', function () {
-                    if (textarea.value) {
-                        textarea.classList.add('has-content');
-                    } else {
-                        textarea.classList.remove('has-content');
-                    }
-                });
-                // Initial state
-                if (textarea.value) {
-                    textarea.classList.add('has-content');
-                }
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.form-floating-custom input.form-control').forEach(function (input) {
-                function checkValue() {
-                    if (input.value) {
-                        input.classList.add('has-content');
-                    } else {
-                        input.classList.remove('has-content');
-                    }
-                }
-                input.addEventListener('input', checkValue);
-                input.addEventListener('blur', checkValue);
-                // Initial state
-                checkValue();
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if the logo splash has already been shown
-            if (!document.cookie.split('; ').find(row => row.startsWith('LogoSplashShown='))) {
-                var splash = document.getElementById('logo-splash');
-                splash.style.display = 'flex';
-                // Set the cookie so it won't show again
-                document.cookie = "LogoSplashShown=true; path=/";
-                setTimeout(function () {
-                    splash.style.display = 'none';
-                }, 1500); // Show for 1.5 seconds
-            }
-        });
-    </script>
-
-    <script>
-        (g => {
-            var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {});
-            var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
-        })({
-            key: "AIzaSyA_iqHJ7YG5-jlEgNd0DL6op79URFwN1WA",
-            v: "weekly",
-            // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-            // Add other bootstrap parameters as needed, using camel case.
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var form = document.getElementById('contact-footer-form');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault(); // Prevent form from submitting to server
-
-                    // Optionally, validate fields here
-
-                    // Show prompt
-                    var promptDiv = document.getElementById('contact-footer-prompt');
-                    promptDiv.innerHTML = '
-                        < div class="alert alert-success text-center mt-2" > Message sent!(Not saved in database)</div > ';
-
-                    // Optionally, reset the form
-                    form.reset();
-                });
-            }
-        });
-    </script>
+        loadFragment('shared-footer', 'footer.html', attachFooterFormHandler);
+    </script>         
 </body>
 </html>
