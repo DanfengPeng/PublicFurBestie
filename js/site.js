@@ -230,3 +230,15 @@ function attachFooterFormHandler() {
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Highlight the current nav link
+    var navLinks = document.querySelectorAll('.nav-link');
+    var currentPage = window.location.pathname.split('/').pop().toLowerCase();
+    navLinks.forEach(function (link) {
+        var href = link.getAttribute('href').toLowerCase();
+        if (href === currentPage) {
+            link.classList.add('active');
+        }
+    });
+});
