@@ -74,7 +74,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!--<script>
     document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.form-floating-custom textarea').forEach(function (textarea) {
@@ -129,5 +129,58 @@
             }
         });
     </script>-->
+    <script>
+        // Initialize EmailJS (only once per site)
+        (function () {
+            emailjs.init("h3_ERKdg3w5LyOYze"); // Replace with your EmailJS public key
+        })();
+
+        // Email validation function
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Apply to all contact forms in the footer
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select all forms with id 'contact-footer-form' (in case you have more than one)
+            document.querySelectorAll('#contact-footer-form').forEach(function (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    var firstName = form.querySelector('[name="firstName"]').value;
+                    var email = form.querySelector('[name="email"]').value;
+                    var content = form.querySelector('[name="content"]').value;
+                    var promptDiv = document.getElementById('contact-footer-prompt');
+
+                    // Validate email
+                    if (!isValidEmail(email)) {
+                        promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please enter a valid email address.</div>';
+                        return;
+                    }
+
+                    // Send email to customer
+                    emailjs.send('service_31yisxd', 'template_cqqt16p', {
+                        to_email: email,
+                        firstName: firstName,
+                        message: content
+                    })
+                        .then(function (response) {
+                            promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
+                            form.reset();
+
+                            // Send email to yourself
+                            emailjs.send('service_31yisxd', 'template_cqqt16p', {
+                                to_email: 'dfpeng32@hotmail.com', // Replace with your email
+                                firstName: firstName,
+                                customer_email: email,
+                                message: content
+                            });
+                        }, function (error) {
+                            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
+                        });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
