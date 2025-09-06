@@ -157,11 +157,14 @@
     </main>
 
 
-    <script>
-        function loadFragment(id, url) {
+    <script>       
+        function loadFragment(id, url, callback) {
             fetch(url)
                 .then(r => r.text())
-                .then(html => document.getElementById(id).innerHTML = html);
+                .then(html => {
+                    document.getElementById(id).innerHTML = html;
+                    if (callback) callback();
+                });
         }
         loadFragment('shared-header', 'header.html');
         loadFragment('shared-footer', 'footer.html', attachFooterFormHandler);
