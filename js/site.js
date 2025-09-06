@@ -184,19 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-// After loading the footer fragment, attach the event listener
-function loadFragment(id, url, callback) {
-    fetch(url)
-        .then(r => r.text())
-        .then(html => {
-            document.getElementById(id).innerHTML = html;
-            if (callback) callback();
-        });
-}
-
-// Usage in your main HTML/JS:
-loadFragment('shared-footer', 'footer.html', function () {
+function attachFooterFormHandler() {
     // Initialize EmailJS if not already done
     if (typeof emailjs !== 'undefined' && !window._emailjsInitialized) {
         emailjs.init("h3_ERKdg3w5LyOYze");
@@ -241,4 +229,4 @@ loadFragment('shared-footer', 'footer.html', function () {
                 });
         });
     });
-});
+}
