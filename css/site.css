@@ -292,12 +292,23 @@ footer {
     background: #fff;
 }
 
-.nav-link.active {
-    color: #8be89f !important; /* Light green text-decoration: underline !important;*/
+/*.nav-link.active {
+    color: #8be89f !important;*/ /* Light green text-decoration: underline !important;*/
 
-    text-underline-offset: 12px; /* Lower underline */
+    /*text-underline-offset: 12px;*/ /* Lower underline */
+    /*font-weight: bold;
+}*/
+
+.nav-link.active {
+    color: #228B22 !important; /* Grass green */
     font-weight: bold;
+    background: #e6ffe6; /* Light green background */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(34,139,34,0.12);
+    text-decoration: underline !important;
+    text-underline-offset: 6px;
 }
+
 
 .animated-img-large {
     width: 100%;
@@ -364,7 +375,7 @@ footer {
     border-left: 2px solid #00724E;
     border-right: 2px solid #00724E;
     transform-origin: top left;
-    margin-bottom: 24px; /* Add this or reduce if already present */
+    margin-bottom: 32px; /* Add this or reduce if already present */
 }
 
 #calendar a,
