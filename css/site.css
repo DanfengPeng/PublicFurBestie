@@ -419,5 +419,14 @@ footer {
     background-color: #fcf8e3;
 }
 
+@media (max-width: 576px) {
+    .footer-hours {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+        text-align: center !important;
+        float: none !important;
+    }
+}
 
 
