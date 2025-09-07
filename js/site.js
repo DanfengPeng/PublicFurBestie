@@ -231,8 +231,7 @@ function attachFooterFormHandler() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Highlight the current nav link
+function highlightActiveNavLink() {
     var navLinks = document.querySelectorAll('.nav-link');
     var currentPage = window.location.pathname.split('/').pop().toLowerCase();
     navLinks.forEach(function (link) {
@@ -241,4 +240,4 @@ document.addEventListener('DOMContentLoaded', function () {
             link.classList.add('active');
         }
     });
-});
+}
