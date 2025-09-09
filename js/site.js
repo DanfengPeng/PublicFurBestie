@@ -202,7 +202,7 @@ function attachFooterFormHandler() {
             var promptDiv = document.getElementById('contact-footer-prompt');
            
             
-            var logo = '<img src="https://Danfeng-Peng-1160674.github.io/PublicFurBestie/images/Frame%204.png" alt="FurBestie Logo" style="width:140px;display:block;margin:0 auto 16px auto;" />';
+            var logo = '<img src="https://Danfeng-Peng-1160674.github.io/PublicFurBestie/images/logo.png" alt="FurBestie Logo" style="width:140px;display:block;margin:0 auto 16px auto;" />';
 
 
             function isValidEmail(email) {
