@@ -468,4 +468,23 @@ footer {
     }
 }
 
+@media (max-width: 576px) {
+    /* Center the logo */
+    footer .logo {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block;
+    }
+    /* Center the parent container */
+    footer .d-flex.flex-column {
+        align-items: center !important;
+    }
+    /* Center the footer links under the logo */
+    .footer-links {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        align-items: center !important;
+        text-align: center;
+    }
+}
 
