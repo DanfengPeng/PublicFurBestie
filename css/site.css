@@ -392,7 +392,7 @@ footer {
     text-decoration: none !important;
 }
 
-/*.img {
+.img {
     max-width: 900px;
     width: 100%;
     height: auto;
@@ -401,25 +401,43 @@ footer {
     margin: 0 auto;
     display: block;
     object-fit: cover;
-}*/
+}
 
-@media (min-width: 992px) { /* Desktop only */
-    .img {
+@media (min-width: 992px) {
+    .homevisit-bottom-fixed {
         position: fixed;
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
-        max-width: 700px;
-        width: 100%;
-        height: auto;
-        border-radius: 18px;
-        box-shadow: 0 2px 16px rgba(0,0,0,0.12);
         z-index: 100;
-        background: #fff;
+        width: 100%;
+        max-width: 900px;
+        background: transparent;
+        text-align: center;
+        padding-bottom: 0;
     }
 
+        .homevisit-bottom-fixed .img {
+            max-width: 900px;
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            margin: 0 auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .homevisit-bottom-fixed .book-service-btn {
+            position: absolute;
+            left: 50%;
+            bottom: 85px;
+            transform: translateX(-50%);
+            z-index: 101;
+        }
+
     main[role="main"] {
-        padding-bottom: 420px; /* Prevent overlap, adjust to image height */
+        padding-bottom: 420px;
     }
 }
 

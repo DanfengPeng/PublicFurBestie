@@ -28,7 +28,7 @@
     <!--<div class="container"> b-jr6rfnnayl-->
     <main b-jr6rfnnayl role="main" class="p-0 m-0">
         <div class="row justify-content-center align-items-center">
-            <div class="col-lg-10 col-md-12 text-center position-relative" style="padding-bottom: 47px;">
+            <div class="col-lg-10 col-md-12 text-center position-relative homevisit-bottom-fixed" style="padding-bottom: 47px;" id="homevisit-bottom">
                 <img src="images/heart3.png" alt="Sleepy Cat" class="img" />
                 <a href="#booking" class="book-service-btn d-none d-md-inline-block">Book My Service</a>
             </div>
@@ -83,7 +83,7 @@
                                 <div class="mb-3">
                                     <label for="email" class="form-label" style="font-weight: 580;">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
-                                </div>                              
+                                </div>
                                 <div class="text-center mb-3">
                                     <button type="submit" class="book-service-btn form-btn">Book Now</button>
                                 </div>
@@ -96,7 +96,7 @@
         </div>
         <div id="shared-footer"></div>
     </main>
-        
+
     <script>
         function loadFragment(id, url, callback) {
             fetch(url)
@@ -120,5 +120,27 @@
             });
         });
     </script>
+
+    <script>
+        // Remove fixed class when user scrolls up or clicks the button
+        function unfixHomevisit() {
+            var el = document.getElementById('homevisit-bottom');
+            if (el && el.classList.contains('homevisit-bottom-fixed')) {
+                el.classList.remove('homevisit-bottom-fixed');
+            }
+        }
+
+        // On button click
+        document.getElementById('bookServiceBtn').addEventListener('click', unfixHomevisit);
+
+        // On scroll up (only if at top, keep fixed)
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 10) {
+                unfixHomevisit();
+            }
+        });
+    </script>
+
+
 </body>
 </html>
