@@ -200,6 +200,9 @@ function attachFooterFormHandler() {
             var email = form.querySelector('[name="email"]').value;
             var content = form.querySelector('[name="content"]').value;
             var promptDiv = document.getElementById('contact-footer-prompt');
+           
+            var logo = "https://Danfeng-Peng-1160674.github.io/PublicFurBestie/images/Frame 4.png"; 
+
 
             function isValidEmail(email) {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -212,7 +215,8 @@ function attachFooterFormHandler() {
             emailjs.send('service_31yisxd', 'template_cqqt16p', {
                 to_email: email,
                 firstName: firstName,
-                message: content
+                message: content,
+                logo: logo
             })
                 .then(function () {
                     promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
@@ -222,7 +226,8 @@ function attachFooterFormHandler() {
                         to_email: 'dfpeng32@hotmail.com',
                         firstName: firstName,
                         customer_email: email,
-                        message: content
+                        message: content,
+                        logo: logo
                     });
                 }, function () {
                     promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
