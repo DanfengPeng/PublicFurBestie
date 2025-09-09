@@ -392,7 +392,7 @@ footer {
     text-decoration: none !important;
 }
 
-.img {
+/*.img {
     max-width: 900px;
     width: 100%;
     height: auto;
@@ -401,7 +401,28 @@ footer {
     margin: 0 auto;
     display: block;
     object-fit: cover;
+}*/
+
+@media (min-width: 992px) { /* Desktop only */
+    .img {
+        position: fixed;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        max-width: 700px;
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+        z-index: 100;
+        background: #fff;
+    }
+
+    main[role="main"] {
+        padding-bottom: 420px; /* Prevent overlap, adjust to image height */
+    }
 }
+
 
 /* Remove global blue style from all events max-width: 866px;*/
 .fc-event {
