@@ -210,6 +210,7 @@ function attachFooterFormHandler() {
             }
             if (!isValidEmail(email)) {
                 promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please enter a valid email address.</div>';
+                promptDiv.style.display = 'block';
                 return;
             }
 
@@ -225,7 +226,7 @@ function attachFooterFormHandler() {
                         + '<button type="button" onclick="this.parentElement.style.display=\'none\'" style="position:absolute;top:8px;right:12px;border:none;background:none;font-size:1.3rem;line-height:1;cursor:pointer;">&times;</button>'
                         + 'Booking submitted! Please check your email for confirmation.'
                         + '</div>';
-
+                    promptDiv.style.display = 'block';
                     form.reset();                
                 }, function () {
                     //promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
@@ -234,6 +235,7 @@ function attachFooterFormHandler() {
                         + '<button type="button" onclick="this.parentElement.style.display=\'none\'" style="position:absolute;top:8px;right:12px;border:none;background:none;font-size:1.3rem;line-height:1;cursor:pointer;">&times;</button>'
                         + 'Failed to send confirmation email. Please check your email address and try again.'
                         + '</div>';
+                    promptDiv.style.display = 'block';
                 });
         });
     });

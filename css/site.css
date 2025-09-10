@@ -146,6 +146,17 @@ main[role="main"] {
     margin-top: 3rem;
 }
 
+.service-img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    background: #fff;
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
 footer {
     position: relative; /* or remove position entirely */
     bottom: auto;
@@ -283,16 +294,6 @@ footer {
     color: #005c3e !important;
 }
 
-.service-img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid var(--primary);
-    background: #fff;
-    margin-left: 32px;
-    margin-right: 32px;
-}
 
 /*.nav-link.active {
     color: #8be89f !important;*/ /* Light green text-decoration: underline !important;*/
