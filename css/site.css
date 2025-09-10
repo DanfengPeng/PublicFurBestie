@@ -451,3 +451,32 @@ footer {
     }
 }
 
+.contact-footer-prompt {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 60%;
+    max-width: 90%;
+    z-index: 10;
+    background: #e6ffe6;
+    color: #228B22;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(34,139,34,0.10);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1rem 2.5rem 1rem 1rem;
+    display: none;
+}
+
+    .contact-footer-prompt .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 1.3rem;
+        color: #228B22;
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1;
+    }

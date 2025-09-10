@@ -178,6 +178,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function showBookingPrompt(message) {
+    var promptDiv = document.getElementById('contact-footer-prompt');
+    promptDiv.innerHTML = '<button class="close-btn" onclick="hideBookingPrompt()">&times;</button>' + message;
+    promptDiv.style.display = 'block';
+}
+function hideBookingPrompt() {
+    var promptDiv = document.getElementById('contact-footer-prompt');
+    promptDiv.style.display = 'none';
+}
+
+
 function attachFooterFormHandler() {
     // Initialize EmailJS if not already done
     if (typeof emailjs !== 'undefined' && !window._emailjsInitialized) {
@@ -209,7 +220,9 @@ function attachFooterFormHandler() {
                 message: content
             })
                 .then(function () {
-                    promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
+                    //promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
+                    showBookingPrompt('Message sent! Please check your email for confirmation.');
+
                     form.reset();                
                 }, function () {
                     promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
