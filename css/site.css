@@ -451,7 +451,7 @@ footer {
     }
 }
 
-.contact-footer-prompt {
+/*.contact-footer-prompt {
     position: absolute;
     top: 16px;
     left: 50%;
@@ -479,4 +479,4 @@ footer {
         border: none;
         cursor: pointer;
         line-height: 1;
-    }
+    }*/

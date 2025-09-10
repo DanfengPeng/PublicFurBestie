@@ -178,16 +178,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-function showBookingPrompt(message) {
-    var promptDiv = document.getElementById('contact-footer-prompt');
-    promptDiv.innerHTML = '<button class="close-btn" onclick="hideBookingPrompt()">&times;</button>' + message;
-    promptDiv.style.display = 'block';
-}
-function hideBookingPrompt() {
-    var promptDiv = document.getElementById('contact-footer-prompt');
-    promptDiv.style.display = 'none';
-}
-
+//function showBookingPrompt(message) {
+//    var promptDiv = document.getElementById('contact-footer-prompt');
+//    promptDiv.innerHTML = '<button class="close-btn" onclick="hideBookingPrompt()">&times;</button>' + message;
+//    promptDiv.style.display = 'block';
+//}
+//function hideBookingPrompt() {
+//    var promptDiv = document.getElementById('contact-footer-prompt');
+//    promptDiv.style.display = 'none';
+//}
 
 function attachFooterFormHandler() {
     // Initialize EmailJS if not already done
@@ -221,11 +220,20 @@ function attachFooterFormHandler() {
             })
                 .then(function () {
                     //promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
-                    showBookingPrompt('Message sent! Please check your email for confirmation.');
+                    //showBookingPrompt('Message sent! Please check your email for confirmation.');
+                    promptDiv.innerHTML = '<div class="alert alert-success text-center" style="position:relative;">'
+                        + '<button type="button" onclick="this.parentElement.style.display=\'none\'" style="position:absolute;top:8px;right:12px;border:none;background:none;font-size:1.3rem;line-height:1;cursor:pointer;">&times;</button>'
+                        + 'Booking submitted! Please check your email for confirmation.'
+                        + '</div>';
 
                     form.reset();                
                 }, function () {
-                    promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
+                    //promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
+                    //showBookingPrompt('Failed to send confirmation email. Please check your email address and try again.');
+                    promptDiv.innerHTML = '<div class="alert alert-danger text-center" style="position:relative;">'
+                        + '<button type="button" onclick="this.parentElement.style.display=\'none\'" style="position:absolute;top:8px;right:12px;border:none;background:none;font-size:1.3rem;line-height:1;cursor:pointer;">&times;</button>'
+                        + 'Failed to send confirmation email. Please check your email address and try again.'
+                        + '</div>';
                 });
         });
     });
