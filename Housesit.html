@@ -208,6 +208,7 @@
                     var phone = document.getElementById('phone').value;
                     var email = document.getElementById('email').value;
                     var promptDiv = document.getElementById('bookingPrompt');
+                    var logo = <img src="images/Frame4.png" alt="FurBestie Logo" class="logo" style="margin-left: 150px;" />;
 
                     // Build booking details
                     var content =
@@ -232,7 +233,8 @@
                     emailjs.send('service_31yisxd', 'template_bv5qf8p', {
                         email: email,
                         name: firstName,
-                        title: content
+                        title: content,
+                        logo: logo
                     })
                         .then(function (response) {
                             promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Booking submitted! Please check your email for confirmation.</div>';
