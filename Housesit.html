@@ -243,7 +243,8 @@
                             emailjs.send('service_31yisxd', 'template_bv5qf8p', {
                                 email: 'dfpeng32@hotmail.com', // your email
                                 name: firstName,
-                                title: content
+                                title: content,
+                                logo: logo
                             });
                         }, function (error) {
                             promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';

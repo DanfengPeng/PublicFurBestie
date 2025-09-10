@@ -199,11 +199,7 @@ function attachFooterFormHandler() {
             var firstName = form.querySelector('[name="firstName"]').value;
             var email = form.querySelector('[name="email"]').value;
             var content = form.querySelector('[name="content"]').value;
-            var promptDiv = document.getElementById('contact-footer-prompt');
-           
-            
-            var logo = '<img src="https://Danfeng-Peng-1160674.github.io/PublicFurBestie/images/logo.png" alt="FurBestie Logo" style="width:140px;display:block;margin:0 auto 16px auto;" />';
-
+            var promptDiv = document.getElementById('contact-footer-prompt');           
 
             function isValidEmail(email) {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -216,20 +212,18 @@ function attachFooterFormHandler() {
             emailjs.send('service_31yisxd', 'template_cqqt16p', {
                 to_email: email,
                 firstName: firstName,
-                message: content,
-                logo: logo
+                message: content
             })
                 .then(function () {
                     promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
                     form.reset();
 
-                    emailjs.send('service_31yisxd', 'template_cqqt16p', {
-                        to_email: 'dfpeng32@hotmail.com',
-                        firstName: firstName,
-                        customer_email: email,
-                        message: content,
-                        logo: logo
-                    });
+                    //emailjs.send('service_31yisxd', 'template_cqqt16p', {
+                    //    to_email: 'dfpeng32@hotmail.com',
+                    //    firstName: firstName,
+                    //    customer_email: email,
+                    //    message: content
+                    //   });
                 }, function () {
                     promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
                 });
