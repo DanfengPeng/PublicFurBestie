@@ -130,13 +130,7 @@ function initBookingForm(options) {
             name: firstName,
             title: content
         })
-            .then(function () {
-                // Send email to yourself
-                emailjs.send('service_31yisxd', 'template_bv5qf8p', {
-                    email: 'dfpeng32@hotmail.com',
-                    name: firstName,
-                    title: content
-                });
+            .then(function () {                
                 form.reset();
             }, function () {
                 promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
@@ -216,14 +210,7 @@ function attachFooterFormHandler() {
             })
                 .then(function () {
                     promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Message sent! Please check your email for confirmation.</div>';
-                    form.reset();
-
-                    //emailjs.send('service_31yisxd', 'template_cqqt16p', {
-                    //    to_email: 'dfpeng32@hotmail.com',
-                    //    firstName: firstName,
-                    //    customer_email: email,
-                    //    message: content
-                    //   });
+                    form.reset();                
                 }, function () {
                     promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
                 });

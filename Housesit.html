@@ -238,14 +238,7 @@
                     })
                         .then(function (response) {
                             promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Booking submitted! Please check your email for confirmation.</div>';
-                            form.reset();
-                            // Send email to yourself
-                            emailjs.send('service_31yisxd', 'template_bv5qf8p', {
-                                email: 'dfpeng32@hotmail.com', // your email
-                                name: firstName,
-                                title: content,
-                                logo: logo
-                            });
+                            form.reset();                            
                         }, function (error) {
                             promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
                         });
