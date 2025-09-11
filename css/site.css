@@ -470,14 +470,34 @@ footer {
     display: none;
 }
 
-    .contact-footer-prompt .close-btn {
-        position: absolute;
-        top: 8px;
-        right: 12px;
-        font-size: 1.3rem;
-        color: #228B22;
-        background: none;
-        border: none;
-        cursor: pointer;
-        line-height: 1;
-    }*/
+.contact-footer-prompt .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.3rem;
+    color: #228B22;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}
+*/
+
+
+#contact-footer-prompt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: none;
+    pointer-events: auto;
+}
+
+#contact-footer-prompt .alert {
+    margin: 0 auto;
+    max-width: 400px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    font-size: 1.1rem;
+}
