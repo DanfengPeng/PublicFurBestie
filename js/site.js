@@ -95,13 +95,22 @@ function initBookingForm(options) {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
+        // Check reCAPTCHA
+        var recaptchaResponse = grecaptcha.getResponse();
+        var promptDiv = document.getElementById('bookingPrompt');
+        if (!recaptchaResponse) {
+            promptDiv.style.display = 'block';
+            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please complete the CAPTCHA.</div>';
+            return;
+        }
+
         var bookingDate = document.getElementById('bookingDate').value;
         var startTime = document.getElementById('startTime').value;
         var finishTime = document.getElementById('finishTime').value;
         var firstName = document.getElementById('firstName').value;
         var phone = document.getElementById('phone').value;
         var email = document.getElementById('email').value;
-        var promptDiv = document.getElementById('bookingPrompt');
+   
 
         var content =
             `Booking Details:\n` +

@@ -117,7 +117,7 @@
                                     <label for="email" class="form-label" style="font-weight: 580;">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" required maxlength="100">
                                 </div>
-
+                                <div class="g-recaptcha" data-sitekey="6LfrAccrAAAAAGXdQwmKR7kcmrfDgfW2n-7pyC4P"></div>
                                 <div class="text-center mb-3">
                                     <button type="submit" class="book-service-btn form-btn">Book Now</button>
                                 </div>
@@ -130,8 +130,9 @@
         </div>
         <div id="shared-footer"></div>
     </main>
- 
-   
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script>
         function loadFragment(id, url, callback) {
             fetch(url)
@@ -202,12 +203,21 @@
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
 
+                    // Check reCAPTCHA
+                    var recaptchaResponse = grecaptcha.getResponse();
+                    var promptDiv = document.getElementById('bookingPrompt');
+                    if (!recaptchaResponse) {
+                        promptDiv.style.display = 'block';
+                        promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please complete the CAPTCHA.</div>';
+                        return;
+                    }
+
                     var startDate = document.getElementById('startDate').value;
                     var finishDate = document.getElementById('finishDate').value;
                     var firstName = document.getElementById('firstName').value;
                     var phone = document.getElementById('phone').value;
                     var email = document.getElementById('email').value;
-                    var promptDiv = document.getElementById('bookingPrompt');
+                    
 
                     // Build booking details
                     var content =
@@ -236,7 +246,7 @@
                     })
                         .then(function (response) {
                             promptDiv.innerHTML = '<div class="alert alert-success text-center mt-2">Booking submitted! Please check your email for confirmation.</div>';
-                            form.reset();                            
+                            form.reset();
                         }, function (error) {
                             promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Failed to send confirmation email. Please check your email address and try again.</div>';
                         });
