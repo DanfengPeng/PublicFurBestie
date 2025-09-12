@@ -187,6 +187,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function canSubmitForm(formKey, maxSubmissions, timeWindowMs) {
+    // formKey: unique key for each form (e.g., 'contact-footer-form')
+    // maxSubmissions: maximum allowed submissions in the time window
+    // timeWindowMs: time window in milliseconds (e.g., 1 hour = 3600000 ms)
+    let now = Date.now();
+    let data = JSON.parse(localStorage.getItem(formKey) || '[]');
+    // Remove timestamps outside the time window
+    data = data.filter(ts => now - ts < timeWindowMs);
+    if (data.length >= maxSubmissions) return false;
+    // Add current timestamp and save
+    data.push(now);
+    localStorage.setItem(formKey, JSON.stringify(data));
+    return true;
+}
+
 function attachFooterFormHandler() {
     // Initialize EmailJS if not already done
     if (typeof emailjs !== 'undefined' && !window._emailjsInitialized) {
@@ -199,6 +214,14 @@ function attachFooterFormHandler() {
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        // Limit: 3 submissions per hour per browser
+        if (!canSubmitForm('contact-footer-form', 3, 3600000)) {
+            var promptDiv = document.getElementById('contact-footer-prompt');
+            promptDiv.style.display = 'block';
+            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">You have reached the submission limit. Please try again later.</div>';
+            return;
+        }
 
         // Check reCAPTCHA
         var recaptchaResponse = grecaptcha.getResponse();
@@ -256,3 +279,5 @@ function highlightActiveNavLink() {
         }
     });
 }
+
+
