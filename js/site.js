@@ -95,6 +95,14 @@ function initBookingForm(options) {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
+        // Limit: 3 submissions per hour per browser
+        if (!canSubmitForm('bookingForm', 3, 3600000)) {
+            var promptDiv = document.getElementById('bookingPrompt');
+            promptDiv.style.display = 'block';
+            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">You have reached the submission limit. Please try again later.</div>';
+            return;
+        }
+
         // Check reCAPTCHA
         var recaptchaResponse = grecaptcha.getResponse();
         var promptDiv = document.getElementById('bookingPrompt');
