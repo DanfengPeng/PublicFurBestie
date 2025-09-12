@@ -53,7 +53,7 @@
                     <h5 class="card-title mb-2 mt-2 text-center" style="color: #F26B5E; font-weight: bold; font-size: 1.6rem;">Book Here</h5>
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <form id="bookingForm">
+                            <form id="bookingForm" action="https://formspree.io/f/mzzawdpk" method="POST">
                                 <input type="hidden" name="service" value="DogWalk" />
                                 <div class="mb-3">
                                     <label for="bookingDate" class="form-label" style="font-weight: 580;">Select Date</label>
@@ -72,16 +72,16 @@
                                 <div class="row mb-3">
                                     <div class="col">
                                         <label for="firstName" class="form-label" style="font-weight: 580;">First Name</label>
-                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required maxlength="50">
                                     </div>
                                     <div class="col">
                                         <label for="phone" class="form-label" style="font-weight: 580;">Phone Number</label>
-                                        <input type="text" class="form-control" id="phone" name="phone" required>
+                                        <input type="text" class="form-control" id="phone" name="phone" required maxlength="15">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label" style="font-weight: 580;">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" required maxlength="100">
                                 </div>
 
                                 <div class="text-center mb-3">

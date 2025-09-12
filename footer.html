@@ -29,27 +29,27 @@
                     Have A Question? Send Me A Message Below:
                 </div>
                 <div id="contact-footer-prompt" class="contact-footer-prompt" style="display:none;"></div>
-                <form id="contact-footer-form">
+                <form id="contact-footer-form" action="https://formspree.io/f/xgvllwnn" method="POST">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating-custom mb-3">
-                                <input type="text" class="form-control" id="firstName" name="firstName" required placeholder=" ">
+                                <input type="text" class="form-control" id="firstName" name="firstName" required placeholder=" " maxlength="50">
                                 <label for="firstName">First name: </label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating-custom mb-3">
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder=" ">
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder=" " maxlength="15">
                                 <label for="phone">Phone: </label>
                             </div>
                         </div>
                     </div>
                     <div class="form-floating-custom mb-3">
-                        <input type="email" class="form-control" id="email" name="email" required placeholder=" ">
+                        <input type="email" class="form-control" id="email" name="email" required placeholder=" " maxlength="100">
                         <label for="email">Email address: </label>
                     </div>
                     <div class="form-floating-custom mb-3">
-                        <textarea class="form-control" id="content" name="content" rows="3" required placeholder=" "></textarea>
+                        <textarea class="form-control" id="content" name="content" rows="3" required placeholder=" " maxlength="1000"></textarea>
                         <label for="content">Message: </label>
                     </div>
                     <div class="text-center mb-1">
