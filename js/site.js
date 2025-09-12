@@ -191,10 +191,19 @@ function attachFooterFormHandler() {
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
+        // Check reCAPTCHA
+        var recaptchaResponse = grecaptcha.getResponse();
+        var promptDiv = document.getElementById('contact-footer-prompt');
+        if (!recaptchaResponse) {
+            promptDiv.style.display = 'block';
+            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please complete the CAPTCHA.</div>';
+            return;
+        }
+
         var firstName = form.querySelector('[name="firstName"]').value;
         var email = form.querySelector('[name="email"]').value;
         var content = form.querySelector('[name="content"]').value;
-        var promptDiv = document.getElementById('contact-footer-prompt');
+        
 
         function isValidEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -217,6 +226,7 @@ function attachFooterFormHandler() {
                     + '</div>';
                 promptDiv.style.display = 'block';
                 form.reset();
+                grecaptcha.reset();
             }, function () {
                 promptDiv.innerHTML = '<div class="alert alert-danger text-center" style="position:relative;">'
                     + '<button type="button" onclick="this.parentElement.style.display=\'none\'" style="position:absolute;top:8px;right:12px;border:none;background:none;font-size:1.3rem;line-height:1;cursor:pointer;">&times;</button>'
