@@ -461,3 +461,17 @@ footer {
     box-shadow: 0 4px 24px rgba(0,0,0,0.18);
     font-size: 1.1rem;
 }
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+@media (max-width: 600px) {
+    .form-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+}
