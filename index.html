@@ -15,15 +15,12 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="css/site.css" />
     <script src="js/site.js"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
-
     <script src="/lib/jquery/dist/jquery.min.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-
         .service-img {
             width: 200px !important;
             height: 200px !important;
@@ -53,11 +50,14 @@
             width: 100%;
             z-index: 10;
             pointer-events: none;
+            white-space: nowrap; /* Prevents line breaks */
+            overflow: hidden; /* Hides overflow if too long */
+            text-overflow: ellipsis; /* Adds ... if text is too long */
         }
 
-            #contact-footer-prompt .alert {
-                pointer-events: auto;
-            }
+        #contact-footer-prompt .alert {
+            pointer-events: auto;
+        }
 
         #Contact {
             position: relative;
