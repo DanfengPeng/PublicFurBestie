@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Visit - FurBestie</title>
+    <link rel="icon" type="image/png" href="/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="js/site.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+</head>
+<body class="">
+    <div id="shared-header"></div>
+
+    <!--<div class="container"> b-jr6rfnnayl-->
+    <main role="main" class="p-0 m-0">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-10 col-md-12 text-center position-relative" style="padding-bottom: 47px;">
+                <img src="images/heart3.png" alt="Sleepy Cat" class="img" />
+                <a href="#booking" class="book-service-btn d-none d-md-inline-block">Book My Service</a>
+            </div>
+        </div>
+
+        <div id="booking" class="container mb-4">
+            <div class="row justify-content-center g-2 g-md-5">
+                <!-- Calendar (left side) -->
+                <div class="col-md-5">
+                    <h5 class="card-title mb-2 mt-2 text-center" style="color: #F26B5E; font-weight: bold; font-size: 1.6rem;">Check Availability</h5>
+                    <div class="calendar-container">
+                        <!-- Date picker for quick navigation -->
+                        <div class="mb-0" style="max-width:900px;margin:0 auto;">
+                            <label for="calendarDatePicker" class="form-label">Go to date:</label>
+                            <input type="date" id="calendarDatePicker" class="form-control" style="max-width:200px;display:inline-block;" />
+                        </div>
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+
+                <!-- Booking Form (right side) -->
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <h5 class="card-title mb-2 mt-2 text-center" style="color: #F26B5E; font-weight: bold; font-size: 1.6rem;">Book Here</h5>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form id="bookingForm">
+                                <input type="hidden" name="service" value="HomeVisit" />
+                                <div class="mb-3">
+                                    <label for="bookingDate" class="form-label" style="font-weight: 580;">Select Date</label>
+                                    <input type="date" class="form-control" id="bookingDate" name="startDate" required />
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="startTime" class="form-label" style="font-weight: 580;">Start Time</label>
+                                        <input type="time" class="form-control" id="startTime" name="startTime" required />
+                                    </div>
+                                    <div class="col">
+                                        <label for="finishTime" class="form-label" style="font-weight: 580;">Finish Time</label>
+                                        <input type="time" class="form-control" id="finishTime" name="finishTime" required />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="firstName" class="form-label" style="font-weight: 580;">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required maxlength="50">
+                                    </div>
+                                    <div class="col">
+                                        <label for="phone" class="form-label" style="font-weight: 580;">Phone Number</label>
+                                        <input type="text" class="form-control" id="phone" name="phone" required maxlength="15">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label" style="font-weight: 580;">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required maxlength="100">
+                                </div>
+                                <div class="g-recaptcha" data-sitekey="6LfrAccrAAAAAGXdQwmKR7kcmrfDgfW2n-7pyC4P"></div>
+                                <div class="text-center mb-3">
+                                    <button type="submit" class="book-service-btn form-btn">Book Now</button>
+                                </div>
+                            </form>
+                            <div id="bookingPrompt"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="shared-footer"></div>
+    </main>
+
+    <script>
+        function loadFragment(id, url, callback) {
+            fetch(url)
+                .then(r => r.text())
+                .then(html => {
+                    document.getElementById(id).innerHTML = html;
+                    if (callback) callback();
+                });
+        }
+        loadFragment('shared-header', 'header.html', highlightActiveNavLink);
+        loadFragment('shared-footer', 'footer.html', attachFooterFormHandler);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initServiceCalendar({
+                events: allServiceEvents
+            });
+            initBookingForm({
+                serviceName: 'Home Visit'
+            });
+        });
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+</body>
+</html>
