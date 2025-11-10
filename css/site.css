@@ -457,7 +457,7 @@ footer {
 
 #contact-footer-prompt .alert {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 600px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.18);
     font-size: 1.1rem;
 }
