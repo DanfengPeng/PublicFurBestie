@@ -455,21 +455,14 @@ footer {
     pointer-events: auto;
 }*/
 
-#contact-footer-prompt .alert {
-    margin: 0 auto;
-    max-width: 800px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-    font-size: 1.1rem;
-}
-
 #contact-footer-prompt {
     position: absolute;
     left: 50%;
-    top: -60px; /* Adjust as needed */
     transform: translateX(-50%);
-    min-width: 800px; /* Set a minimum width */
-    max-width: 120vw; /* Responsive max width */
-    width: auto; /* Allow width to fit content */
+    top: -60px; /* Adjust as needed */
+    min-width: 600px; 
+    max-width: 80vw; /* Responsive max width */
+    width: auto; 
     z-index: 10;
     pointer-events: none;
     white-space: nowrap; /* Prevents line breaks */
@@ -477,6 +470,13 @@ footer {
     text-overflow: ellipsis; /* Adds ... if text is too long */
     text-align: center; /* Center text inside */
 }
+
+/*#contact-footer-prompt .alert {
+    margin: 0 auto;
+    max-width: 600px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    font-size: 1.1rem;
+}*/
 
 .form-actions {
     display: flex;
