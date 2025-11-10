@@ -227,7 +227,7 @@ function attachFooterFormHandler() {
         if (!canSubmitForm('contact-footer-form', 3, 3600000)) {
             var promptDiv = document.getElementById('contact-footer-prompt');
             promptDiv.style.display = 'block';
-            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">You have reached the submission limit. Please try again later.</div>';
+            promptDiv.innerHTML = '<div class="alert alert-danger text-center" style="position:relative;">You have reached the submission limit. Please try again later.</div>';
             return;
         }
 
@@ -236,7 +236,7 @@ function attachFooterFormHandler() {
         var promptDiv = document.getElementById('contact-footer-prompt');
         if (!recaptchaResponse) {
             promptDiv.style.display = 'block';
-            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please complete the CAPTCHA.</div>';
+            promptDiv.innerHTML = '<div class="alert alert-danger text-center" style="position:relative;">Please complete the CAPTCHA.</div>';
             return;
         }
 
@@ -249,7 +249,7 @@ function attachFooterFormHandler() {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
         if (!isValidEmail(email)) {
-            promptDiv.innerHTML = '<div class="alert alert-danger text-center mt-2">Please enter a valid email address.</div>';
+            promptDiv.innerHTML = '<div class="alert alert-danger text-center" style="position:relative;">Please enter a valid email address.</div>';
             promptDiv.style.display = 'block';
             return;
         }
