@@ -38,19 +38,19 @@
             overflow-y: auto;
         }
 
-            #calendar a,
-            #calendar .fc-daygrid-day-number,
-            #calendar .fc-col-header-cell-cushion {
-                color: #333 !important;
+        #calendar a,
+        #calendar .fc-daygrid-day-number,
+        #calendar .fc-col-header-cell-cushion {
+            color: #333 !important;
+            text-decoration: none !important;
+        }
+
+            #calendar a:hover,
+            #calendar .fc-daygrid-day-number:hover,
+            #calendar .fc-col-header-cell-cushion:hover {
+                color: #222 !important;
                 text-decoration: none !important;
             }
-
-                #calendar a:hover,
-                #calendar .fc-daygrid-day-number:hover,
-                #calendar .fc-col-header-cell-cushion:hover {
-                    color: #222 !important;
-                    text-decoration: none !important;
-                }
 
         .img {
             max-width: 1125px;
@@ -73,9 +73,21 @@
    
     <main role="main" class="p-0 m-0">
         <div class="row justify-content-center align-items-center">
-            <div class="col-lg-10 col-md-12 text-center position-relative" style="padding-bottom: 47px;">
+            <div class="col-lg-11 col-md-12 image-container" style="padding-bottom: 47px;">
                 <img src="images/daisy.png" alt="Smiling dog relaxing on a couch" class="img" />
-                <a href="#booking" class="book-service-btn d-none d-md-inline-block">Check My Availability</a>
+                <div class="text-overlay">
+                    This page is for my <span style="color:deeppink"> trusted and valued </span>homeowners to check my availability, which can also be found on my 
+                    <a href="https://www.kiwihousesitters.co.nz/house-sitter-pet-sitter/536797/reliable-caring-and-eco-conscious-non-smoker?" class="profile-button" target="_blank">
+                        Kiwi Housesitter Profile
+                    </a>
+                    <br /><br />
+                    I aim to schedule my house sits one after another, with as little gap as possible (ideally 0–3 days) between bookings.
+                    <br /><br />
+
+                    If your dates fit my calendar, please create a job on Kiwi House Sitters and we can confirm it there. This keeps everything within Kiwi House Sitters’
+                    guidelines and ensures we both keep our rights to leave reviews and raise any concerns if needed.
+                </div>
+                <a href="#booking" class="book-service-btn d-none d-md-inline-block">Check My Availability Below</a>
             </div>
         </div>
 
